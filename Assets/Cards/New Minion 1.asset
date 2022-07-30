@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a40a9e22d224fb4cba4ac30ab1336dd, type: 3}
+  m_Name: New Minion 1
+  m_EditorClassIdentifier: 
+  _name: 
+  _description: 
+  _artwork: {fileID: 0}
+  _cost: 0
+  _baseAttack: 0
+  _baseHealth: 0
+  effectsByTriggers:
+  - Listener: 0
+    EffectCompartment:
+      targetData:
+        targetingOption: 0
+        targetableType: 0
+        minionTribe: 0
+      isConditional: 0
+      condition:
+        isTrue: 0
+        conditionLogic: 0
+      effect:
+        effectType: 3
+        ValueToSet: 0
+        valueOrID: 0

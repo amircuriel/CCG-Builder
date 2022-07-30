@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a40a9e22d224fb4cba4ac30ab1336dd, type: 3}
+  m_Name: Rufus
+  m_EditorClassIdentifier: 
+  _name: Mr. Snuffles
+  _description: YEEEET
+  _artwork: {fileID: 21300000, guid: 25cef1bb73e99b346a44fba23bed55ea, type: 3}
+  _baseCost: 5
+  _baseAttack: 5
+  _baseHealth: 5
+  _tribe: 0
+  effectsByTriggers:
+  - Listener: 0
+    EffectCompartment:
+      condition:
+        isConditional: 0
+        desiredResultBoolean: 0
+        condition:
+          conditionChecked: 0
+          cardTypeChecked: 0
+          ownership: 0
+        conditionTarget: 0
+      targetData:
+        affectedTargets: 0
+        relevantTargetOwnership: 0
+        affectedTargetTypes: 0
+      effect:
+        effectType: 0
+        variableParameters:
+          variable: 0
+          variableName: 
+          value: 0
+        amount: 5
+        MinionOrModifierID: 0
+  - Listener: 1
+    EffectCompartment:
+      condition:
+        isConditional: 0
+        desiredResultBoolean: 0
+        condition:
+          conditionChecked: 0
+          cardTypeChecked: 0
+          ownership: 0
+        conditionTarget: 0
+      targetData:
+        affectedTargets: 0
+        relevantTargetOwnership: 0
+        affectedTargetTypes: 0
+      effect:
+        effectType: 1
+        variableParameters:
+          variable: 0
+          variableName: 
+          value: 0
+        amount: 10
+        MinionOrModifierID: 0
+  - Listener: 8
+    EffectCompartment:
+      condition:
+        isConditional: 0
+        desiredResultBoolean: 0
+        condition:
+          conditionChecked: 5
+          cardTypeChecked: 0
+          ownership: 0
+        conditionTarget: 0
+      targetData:
+        affectedTargets: 2
+        relevantTargetOwnership: 2
+        affectedTargetTypes: 0
+      effect:
+        effectType: 3
+        variableParameters:
+          variable: 0
+          variableName: 
+          value: 0
+        amount: 10
+        MinionOrModifierID: 0
