@@ -3,21 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataStructs;
 
-public class Minion : Card
+public class Spell : Card
 {
-    public MinionData BaseMinion { get => BaseCard as MinionData; }
-    public List<EventTrigger> EventTriggers;
-    public Minion(MinionData minionData) : base(minionData)
+    public SpellData BaseSpell { get => BaseCard as SpellData; }
+    public Spell(SpellData spellData) : base(spellData)
     {
-        Debug.Log("Constructed Card - Minion");
-        _standardVariablesByEnum.Add(CardVariable.BaseAttack, BaseMinion.BaseAttack);
-        _standardVariablesByEnum.Add(CardVariable.Attack, BaseMinion.BaseCost);
-        _standardVariablesByEnum.Add(CardVariable.BaseHealth, BaseMinion.BaseCost);
-        _standardVariablesByEnum.Add(CardVariable.MaxHealth, BaseMinion.BaseCost);
-        _standardVariablesByEnum.Add(CardVariable.Health, BaseMinion.BaseCost);
-        
 
-        
     }
 
     public override void OnDiscard()
@@ -48,13 +39,13 @@ public class Minion : Card
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override void ClearAllModifiers()

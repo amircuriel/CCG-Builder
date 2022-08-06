@@ -4,7 +4,9 @@ using UnityEngine;
 using DataStructs;
 
 /// <summary>
-/// Abstract parent to all other card types, it contains all the base data of a card
+/// The basic, abstract representation of a card, in the form of a ScriptableObject to be saved outside of game.
+/// It contains the base parameters shared by all cards and is used to create new cards of different types.
+/// Children include "MinionData" and "SpellData".
 /// </summary>
 public abstract class CardData : ScriptableObject
 {
@@ -18,6 +20,8 @@ public abstract class CardData : ScriptableObject
     [Header("Gameplay Properties")]
     [SerializeField] protected int _baseCost;
     #endregion
+
+    public abstract Card ToCard();
 
     public abstract CardType getCardType();
 

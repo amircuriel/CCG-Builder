@@ -32,7 +32,7 @@ public class CardDisplay : MonoBehaviour
 
     private void Start()
     {
-		InitializeBaseCardDisplay();
+		
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class CardDisplay : MonoBehaviour
     /// <param name="Card"></param>
     public void InitializeCardDisplay(Card Card)
 	{
-		InitializeAppearance(Card._cardData);
+		InitializeAppearance(Card.BaseCard);
 
 		UpdateDisplayedValues(Card);
 	}
@@ -53,7 +53,7 @@ public class CardDisplay : MonoBehaviour
     [ContextMenu("InitializeBaseCardDisplay")]
 	private void InitializeBaseCardDisplay() 
 	{
-		CardData Card = GetComponentInParent<Card>()._cardData;
+		CardData Card = GetComponentInParent<Card>().BaseCard;
 		
 		InitializeAppearance(Card);
 
@@ -83,7 +83,7 @@ public class CardDisplay : MonoBehaviour
 		NameText.text = Card.Name;
 		DescriptionText.text = Card.Description;
 
-		string s = Card is ISubtypeable t ? t.getSubtypeString() : null;
+		string s = Card is ISubtypeable t ? t.GetSubtypeString() : null;
 		if (s != null)
 		{
 			SubtypeText.text = s;
@@ -99,7 +99,7 @@ public class CardDisplay : MonoBehaviour
     {
 		CostText.text = card.GetVariable(CardVariable.Cost).ToString();
 		CostText.color = GetAppropriateColor(card.GetVariable(CardVariable.Cost), card.GetVariable(CardVariable.BaseCost));
-		switch (card._cardData.getCardType())
+		switch (card.BaseCard.getCardType())
 		{
 			case CardType.Minion:
 				AttackText.text = card.GetVariable(CardVariable.Attack).ToString();

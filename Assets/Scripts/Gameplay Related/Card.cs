@@ -3,34 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataStructs;
 
-public abstract class Card : MonoBehaviour
+/// <summary>
+/// Contains all the current values and data for a unique instance of a card.
+/// Used only during gameplay as a data 'model', alongside "CardController" and "CardDisplay".
+/// Children include "Minion" and "Spell".
+/// </summary>
+public abstract class Card
 {
-    public int InstanceID { get; protected set; }
-    public CardData _cardData { get; protected set; }
-    protected List<Modifier> _modifiers;
+    public int InstanceID { get; private set; }
+    public CardData BaseCard { get; protected set; }
+    public Zone CurrentZone { get; set; }
+    public Player CurrentOwner { get; set; }
+
     protected Dictionary<CardVariable, int> _standardVariablesByEnum;
     protected Dictionary<string, int> _uniqueVariablesByName;
-    protected Zone _currentZone;
+    protected List<Modifier> _modifiers;
 
-    private void Awake()
+    protected Card(CardData cardData)
     {
-        InitializeBaseCard(_cardData);
-    }
-
-    protected void InitializeBaseCard(CardData cardData)
-    {
-        Debug.Log("Called InitializeBaseCard");
-
+        BaseCard = cardData;
         _standardVariablesByEnum = new Dictionary<CardVariable, int>();
         _uniqueVariablesByName = new Dictionary<string, int>();
         _modifiers = new List<Modifier>();
         _standardVariablesByEnum.Add(CardVariable.BaseCost, cardData.BaseCost);
         _standardVariablesByEnum.Add(CardVariable.Cost, cardData.BaseCost);
-        //EXPAND
-        InitializeCardVariant(cardData);
+        InstanceID = GameSessionManager.GenerateUniqueID();
     }
-
-    protected abstract void InitializeCardVariant(CardData cardData);
 
     public abstract void OnPlay();
     public abstract void OnDraw();
@@ -50,7 +48,7 @@ public abstract class Card : MonoBehaviour
             else
             {
                 //IMPROVE//
-                Debug.LogError("ERROR: Unique variable not found: " + uniqueVariableName);
+                Debug.LogError("ERROR: Unique variable not found on " + BaseCard.Name + ": " + uniqueVariableName);
                 return int.MinValue;
             }
         }
@@ -63,7 +61,7 @@ public abstract class Card : MonoBehaviour
             else
             {
                 //IMPROVE//
-                Debug.LogError("ERROR: Card does not contain variable - " + variable.ToString());
+                Debug.LogError("ERROR: " + BaseCard.Name + " does not contain variable - " + variable.ToString());
                 return int.MinValue;
             }
         }
@@ -80,7 +78,8 @@ public abstract class Card : MonoBehaviour
             }
             else
             {
-                Debug.LogError("ERROR: Unique variable not found: " + model.UniqueVariableName);
+                //Initializes the variable
+                _uniqueVariablesByName.Add(model.UniqueVariableName, model.Value);
             }
         }
         else
@@ -93,7 +92,7 @@ public abstract class Card : MonoBehaviour
             else
             {
                 //IMPROVE//
-                Debug.LogError("ERROR: Card does not contain variable: " + model.VariableToChange.ToString());
+                Debug.LogError("ERROR: " + BaseCard.Name + " does not contain variable: " + model.VariableToChange.ToString());
             }
         }
     }

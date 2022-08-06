@@ -9,31 +9,33 @@ using System;
 /// </summary>
 namespace DataStructs
 {
-    public interface ISubtypeable
+    /// <summary>
+    /// All possible types of events that can occur in the game, usually as a result of player actions.
+    /// </summary>
+    public enum GameEvent
     {
-        string getSubtypeString();
+        OnPlay,
+        OnSummon,
+        AfterSummon,
+        OnSpellcast,
+        AfterSpellcast,
+        OnDeath,
+        OnDraw,
+        OnDiscard,
+        OnAttack,
+        AfterAttack,
+        OnAttacked,
+        AfterAttacked,
+        OnDamage,
+        OnHeal,
+        EndOfTurn,
+        StartOfTurn
     }
-
+    
     public enum TriggerType
     {
         ActiveCardAction,
         GameEvent
-    }
-
-    /// <summary>
-    /// All possible types of occurences that would trigger an effect.
-    /// </summary>
-    public enum Trigger
-    {
-        OnPlay,
-        OnDeath,
-        OnDraw,
-        OnDiscard,
-        BeforeAttack,
-        AfterAttack,
-        OnDamaged,
-        OnHealed,
-        OnValueChanged
     }
 
     public enum GameEventListener
@@ -42,7 +44,6 @@ namespace DataStructs
         OnOpponentValueChanged
     }
 
-    [Serializable]
     /// <summary>
     /// Card variables that can be checked or changed (only numerically)
     /// </summary>
@@ -58,6 +59,11 @@ namespace DataStructs
         Durability,
         BaseDurability,
         UniqueNamedVariable
+    }
+
+    public enum GlobalVariable
+    {
+
     }
 
     [Serializable]
@@ -132,13 +138,14 @@ namespace DataStructs
 
     public enum Zone
     {
+        None = 0,
         InPlay = 1,
         Hand = 2,
         Deck = 3,
-        Graveyard = 4,
-        RemovedFromGame = 5,
-        SetAside = 6,
-        Discarded = 7
+        //Graveyard = 4,
+        //RemovedFromGame = 5,
+        //SetAside = 6,
+        //Discarded = 7
     }
 
     public enum AffectedTargets
@@ -157,20 +164,28 @@ namespace DataStructs
         Weapon
     }
 
+    #region Interfaces (temp location)
     public interface ITargetable
     {
-        bool isTargetable { get; }
-        TargetableType getTargetType();
+        public bool IsCurrentlyTargetable { get; }
+        public TargetableType GetTargetType();
+        public Player GetOwner();
     }
 
     public interface IDamageable : ITargetable
     {
-        int currentHealth { get; }
-        void ApplyDamage(int damage);
+        public int CurrentHealth { get; }
+        public void ApplyDamage(int damage);
     }
 
     public interface IBoardPresent
     {
         int BoardPosition { get; }
     }
+
+    public interface ISubtypeable
+    {
+        public string GetSubtypeString();
+    }
+    #endregion
 }
