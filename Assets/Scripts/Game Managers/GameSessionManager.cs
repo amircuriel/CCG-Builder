@@ -14,7 +14,7 @@ public class GameSessionManager : Singleton<GameSessionManager>
     #endregion
 
     public Player PlayerOne, PlayerTwo;
-    public Player CurrentPlayer;
+    public Player CurrentPlayer { get; private set; }
 
     // Start is called before the first frame update
     void Start()

@@ -25,9 +25,6 @@ public struct EventTrigger
 /// 2. Other: Events called from other cards (when you play ANOTHER card/when ANOTHER minion dies/when ANOTHER minions attacks)
 /// 3. Any: Events called from both this and other cards (when A minion dies/when A minion attacks/when A card is played)
 /// 4. OtherFriendly/AnyFriendly/AnyEnemy: Like Other/Any, but only for friendly/enemy events (can be used to differentiate between "At the end of your turn" and "and the end of each turn").
-/// 
-/// NOTE: OnPlay/OnDeath/OnSummon effects, when used with the "Any/AnyFriendly" origin, will not trigger when the associated minion
-/// itself is played/dies, effectively functioning as the "Other" origin.
 public enum EventOrigin
 {
     This,
