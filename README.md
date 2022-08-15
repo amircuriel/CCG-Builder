@@ -1,9 +1,14 @@
 # CCG-Builder
  A development-focused template of a collectible card game.
  
-I've created a foundation of flexible rules and mechanics (inspired by the popular CCG "Hearthstone"), to try and support as much mechanical complexity as possible, which can be used to create many different effects and interactions in the game, and can also be easily expanded upon to support additional mechanics, card types and more, without needing to modify the whole architecture.
+The goal of this project is to create a basic card game template that you can:
 
-This is intended to be a template anyone can use and expand upon to create a complex card game with minimal coding and effort.
+1. Use out-of-the-box to create a card game of your own, using the game's base mechanics to create a wide array of different cards.
+
+2. Easily expand upon with additional card types, mechanics and more, with no to minimal coding.
+
+To achieve that, I've created a set of basic rules, mechanics and keywords (inspired by the popular CCG "Hearthstone") which are used to define complex, intricate effects and interactions.
+This allows the game to support as much mechanical complexity as reasonably possible, while also allowing you to easily expand it in the future to support additional mechanics, card types and more, without needing to modify the whole architecture.
 
 Currently WIP.
 
