@@ -4,17 +4,17 @@ using UnityEngine;
 using DataStructs;
 
 /// <summary>
-/// Cards with EventTriggers will listen to GameEvents coming from specific origins (including themselves),
+/// Cards with Triggered Effects will listen to GameEvents coming from specific origins (including themselves),
 /// and play their effects when such events occur.
 /// This includes both one-time effects (when this is played / when this dies), 
 /// and constant listeners (whenever [event] happens while this is in play)
 /// </summary>
 [System.Serializable]
-public struct EventTrigger
+public struct TriggeredEffect
 {
-    public GameEvent Event;
-    public EventOrigin EventOrigin;
-    public TriggeredEffect TriggeredEffect;
+    public GameEvent Trigger;
+    public EventOrigin TriggerOrigin;
+    public EffectCompartment Effect;
     public int originatorId { get; set; }
 }
 
@@ -36,16 +36,10 @@ public enum EventOrigin
 }
 
 /// <summary>
-/// Note: When creating a new triggered effect, choose the conditions and the targets, and then define the effect itself as a choice between:
-/// 1. Changing the health value
-/// 2. Adding a modifier
-/// 3. Other
-/// 
-/// IF you add a modifier, then you need to also create the unique modifier, assign it a name and an ID, store it somewhere,
-/// and link the effect to the modifier ID.
+/// Contains all information about an effect, such as its conditions, its targets, and its actual effect on the game.
 /// </summary>
 [System.Serializable]
-public struct TriggeredEffect
+public struct EffectCompartment
 {
     public bool isConditional;
     [DrawIf("isConditional", true)]
@@ -56,6 +50,7 @@ public struct TriggeredEffect
 
 /// <summary>
 /// The actual effect portion that directly changes the game state.
+/// This defines what is happening in the game as a result of the Triggered Effect.
 /// </summary>
 [System.Serializable]
 public struct Effect

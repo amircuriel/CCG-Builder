@@ -11,7 +11,7 @@ public class MinionData : CardData, ISubtypeable
     [SerializeField] private int _baseAttack;
     [SerializeField] private int _baseHealth;
     [SerializeField] private MinionSubtype _tribe = MinionSubtype.None;
-    [SerializeField] private List<EventTrigger> eventTriggers;
+    [SerializeField] private List<TriggeredEffect> eventTriggers;
     #endregion
 
     public override Card ToCard()
@@ -31,5 +31,5 @@ public class MinionData : CardData, ISubtypeable
 
     public int BaseAttack { get => _baseAttack; set => _baseAttack = value; }
     public int BaseHealth { get => _baseHealth; set => _baseHealth = value; }
-    public List<EventTrigger> EffectsByTriggers { get => new List<EventTrigger>(eventTriggers);}
+    public List<TriggeredEffect> EffectsByTriggers { get => new List<TriggeredEffect>(eventTriggers);}
 }

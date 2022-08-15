@@ -11,7 +11,7 @@ public class MinionController : CardController
     void Start()
     {
         //WORK IN PROGRESS
-        foreach (EventTrigger eventTrigger in ControlledMinion.EventTriggers)
+        foreach (TriggeredEffect eventTrigger in ControlledMinion.EventTriggers)
         {
             EventManager.Instance.Subscribe(ControlledMinion.InstanceID, eventTrigger);
         }

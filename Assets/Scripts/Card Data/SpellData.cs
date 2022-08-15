@@ -9,7 +9,7 @@ public class SpellData : CardData, ISubtypeable
 {
     #region Serialized Properties
     [SerializeField] private SpellSubtype _spellSchool = SpellSubtype.None;
-    [SerializeField] private List<TriggeredEffect> spellEffects;
+    [SerializeField] private List<EffectCompartment> spellEffects;
 
     #endregion
 
@@ -27,5 +27,5 @@ public class SpellData : CardData, ISubtypeable
     {
         return _spellSchool == SpellSubtype.None ? null : _spellSchool.ToString();
     }
-    public List<TriggeredEffect> SpellEffects { get => new List<TriggeredEffect>(spellEffects);}
+    public List<EffectCompartment> SpellEffects { get => new List<EffectCompartment>(spellEffects);}
 }

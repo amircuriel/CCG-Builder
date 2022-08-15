@@ -41,7 +41,7 @@ public class GameSessionManager : Singleton<GameSessionManager>
         //await all subsequent events to resolve themselves
     }
 
-    public void ApplyEffect(TriggeredEffect effect)
+    public void ApplyEffect(EffectCompartment effect)
     {
         //WORK IN PROGRESS
     }

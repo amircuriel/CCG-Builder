@@ -6,7 +6,7 @@ using DataStructs;
 public class Minion : Card
 {
     public MinionData BaseMinion { get => BaseCard as MinionData; }
-    public List<EventTrigger> EventTriggers;
+    public List<TriggeredEffect> EventTriggers;
     public Minion(MinionData minionData) : base(minionData)
     {
         Debug.Log("Constructed Card - Minion");

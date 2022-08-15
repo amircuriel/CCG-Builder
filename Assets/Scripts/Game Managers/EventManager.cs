@@ -9,6 +9,9 @@ using UnityEngine.Events;
 /// </summary>
 public class EventManager : Singleton<EventManager>
 {
+    /// <summary>
+    /// Contains all the data regarding a specific game event.
+    /// </summary>
     public struct EventMessage
     {
         public GameEvent gameEvent; // never null
@@ -28,7 +31,7 @@ public class EventManager : Singleton<EventManager>
     public UnityAction<EventMessage> AnyEvent;
     public Dictionary<int, List<UnityAction<EventMessage>>> SubscribedEventsByOriginatorId;
 
-    public void Subscribe(int originatorId, EventTrigger eventTrigger)
+    public void Subscribe(int originatorId, TriggeredEffect eventTrigger)
     {
         // Add this listening event to the list of listening events
         UnityAction<EventMessage> func = (EventMessage eventMessage) =>
@@ -62,16 +65,16 @@ public class EventManager : Singleton<EventManager>
         AnyEvent.Invoke(eventMessage);
     }
 
-    private bool OnEvent(EventTrigger listeningTrigger, EventMessage eventMessage)
+    private bool OnEvent(TriggeredEffect listeningTrigger, EventMessage eventMessage)
     {
         // check that event filters fit this event
-        if (listeningTrigger.Event != eventMessage.gameEvent) 
+        if (listeningTrigger.Trigger != eventMessage.gameEvent) 
             return false;
-        if (listeningTrigger.EventOrigin == EventOrigin.This && eventMessage.card.InstanceID != listeningTrigger.originatorId) 
+        if (listeningTrigger.TriggerOrigin == EventOrigin.This && eventMessage.card.InstanceID != listeningTrigger.originatorId) 
             return false;
         // apply this event's effect
         // TODO - triggered effects with logic that depends on event message
-        GameSessionManager.Instance.ApplyEffect(listeningTrigger.TriggeredEffect);
+        GameSessionManager.Instance.ApplyEffect(listeningTrigger.Effect);
         return false;
         // return true if, for example, card was countered
     }
