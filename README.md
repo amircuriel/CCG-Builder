@@ -1,21 +1,25 @@
 # CCG-Builder
  A development-focused template of a collectible card game.
  
-The goal of this project is to create a basic card game template that you can:
+The goal of this project is to take an existing card game, break it down to its most basic components, and rebuild it from the ground up in the most flexible and generic way possible, in order to create a basic template anyone can use to:
 
-1. Use out-of-the-box to create a card game of your own, using the game's base mechanics to create a wide array of different cards.
+1. Design a wide array of different cards using the game's base mechanics, and play with them against another player.
 
-2. Easily expand upon with additional card types, mechanics and more, with no to minimal coding.
+2. Easily expand it with additional card types, mechanics and more, with little to no coding, in order to create a unique card game of their own.
 
-To achieve that, I've created a set of basic rules, mechanics and keywords (inspired by the popular CCG "Hearthstone") which are used to define complex, intricate effects and interactions.
-This allows the game to support as much mechanical complexity as reasonably possible, while also allowing you to easily expand it in the future to support additional mechanics, card types and more, without needing to modify the whole architecture.
+To achieve that, I've reverse-engineered the popular card game "Hearthstone", and created a set of basic rules, mechanics and keywords which can be used to define complex effects and interactions.
+</br>These rules allows the game to support high levels of mechanical complexity out-of-the-box, while also allowing you to easily expand or change the rules in the future to support additional effects, mechanics, card types and more, without needing to re-write the whole architecture.
 
-Currently WIP.
+More info in this script:
+</br>*[Triggered Effect](Assets/Scripts/Core%20Mechanics/TriggeredEffect.cs)*
 
+Example of a card being designed in the inspector:
+</br>(Currently WIP)
 ![](GitHub%20Metadata/Screenshot%201.png)
+</br>Of course, in order to try and test everything, I've also created a basic gameplay demo that allows you to build a deck with all the cards you've created, and play with them against another player (on the same computer, currently), using the basic gameplay structure of the original game (alternating turns between players, win/lose condition based on the players' health, etc.).
+</br>[This part is currently unfinished]
 
-**How it works:**
-I stripped apart and defined every kind of 
+**Detailed explanation:**
 
 I have designated an "Event" for every action in the game, such as playing a card, attacking, having something die, ending your turn, etc.
 
