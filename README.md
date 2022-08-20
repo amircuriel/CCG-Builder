@@ -1,16 +1,16 @@
 # CCG-Builder
  A development-focused template of a collectible card game.
  
-The goal of this project is to take an existing card game, break it down to its most basic components, and rebuild it from the ground up in the most flexible and generic way possible, in order to create a basic template anyone can use to:
+The goal of this project is to build a card game with an architectural design that is so modular and flexible, anyone could use it to:
 
-1. Design a wide array of different cards using the game's base mechanics, and play with them against another player.
+1. Design a wide array of different cards using the game's base mechanics, and test them in play against another player.
 
 2. Easily expand it with additional card types, mechanics and more, with little to no coding, in order to create a unique card game of their own.
 
-To achieve that, I've reverse-engineered the popular card game "Hearthstone", and created a set of basic rules, mechanics and keywords which can be used to define complex effects and interactions.
-</br>These rules allows the game to support high levels of mechanical complexity out-of-the-box, while also allowing you to easily expand or change the rules in the future to support additional effects, mechanics, card types and more, without needing to re-write the whole architecture.
+To achieve that, I've taken the popular card game "Hearthstone" as a template, broke it down to its basic building blocks, and extracted from it a set of simple rules, mechanics and keywords which can be combined to define complex effects and interactions.
+</br>This flexible foundation allows the game to support high levels of mechanical complexity out-of-the-box, while also allowing you to easily expand or change the rules in the future to support additional effects, mechanics, card types and more, without needing to re-write the whole architecture or add special cases for everything.
 
-More info in this script:
+For more info, read this script:
 </br>*[Triggered Effect](Assets/Scripts/Core%20Mechanics/TriggeredEffect.cs)*
 
 Example of a card being designed in the inspector:
@@ -29,4 +29,4 @@ It is built this way to homogenize all effects within the game and make them all
 
 For Example, a card with an effect that is listening to the **"OnPlay"** event could set its origin to **"This"**, so the card will trigger its effect when it is played from hand. However, if the event origin is set to **"Other"**, whenever the card is on the board (as a minion, for example) and another card is played, the effect will then trigger. This logic of course applies to all other types of events.
 
-So whenever anything occurs in the game, a message is sent to the GameManager, which processes the event, and then to the EventManager, which notifies all active listeners of this event to check if the event origin matches theirs, and if so, trigger their effect.
+So whenever anything occurs in the game, a message is sent to the GameManager, which processes the event, and then to the EventManager, which notifies all active listeners of this event to check if the event origin matches theirs, and if so, the triggered effect is sent to the GameManager to be activated.
